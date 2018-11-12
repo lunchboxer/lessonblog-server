@@ -1,0 +1,31 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "mongodb": "mongodb://lessonblogdbuser:8jcEn6rQGevJg55@ds155213.mlab.com:55213/lessonblogdb",
+  "authentication": {
+    "secret": "7df7b6bcd931abd0da2adfa45485c1f2afec2fc4b235c429b387e776a8dd5fcc85c43b744294723672587053ffa6ff219a00fddaf316c343dd2fae35ed578662992972208639dac8f8bb1705d0a1f385ee4229ab220bc29a46af65d812630002a2e022a91b311f80ce496795b228d1616562c5eeb7875325cf743aa45365c867eaca63661549187647b3af3e8e5826c0c56badf7a86759e9a831860bf1bcf4240fae9a9b6fc4d4002bb7315e272740e988626db6f654e3262ca66b2ec9134fd6d62b3e9c2bf0ca4fe9fb23885ccefba10434f857d5c4b668b31580c7eb7d974c234331e00a26038fca1e0c3cc3ff1eee42f001aeaa3587c3161a54a61d2f607f",
+    "strategies": ["jwt", "local"],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "username",
+      "passwordField": "password"
+    }
+  }
+}
