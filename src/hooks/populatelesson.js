@@ -4,7 +4,7 @@
 // eslint-disable-next-line no-unused-vars
 module.exports = function() {
   return async context => {
-    context.params.query = { $populate: 'group' };
+    context.params.query = { $populate: {path: 'group', select: 'name id'  }};
     return context;
   };
 };
