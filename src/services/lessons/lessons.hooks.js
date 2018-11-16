@@ -2,6 +2,8 @@ const { authenticate } = require('@feathersjs/authentication').hooks;
 
 const populatelesson = require('../../hooks/populatelesson');
 
+const pushorpullmaterials = require('../../hooks/pushorpullmaterials');
+
 module.exports = {
   before: {
     all: [],
@@ -9,7 +11,7 @@ module.exports = {
     get: [populatelesson()],
     create: [authenticate('jwt')],
     update: [authenticate('jwt')],
-    patch: [authenticate('jwt')],
+    patch: [authenticate('jwt'), pushorpullmaterials()],
     remove: [authenticate('jwt')]
   },
 
