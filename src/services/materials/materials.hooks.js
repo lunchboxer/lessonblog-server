@@ -1,5 +1,7 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
+const cleanupassocations = require('../../hooks/cleanupassocations');
+
 module.exports = {
   before: {
     all: [],
@@ -18,7 +20,7 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [cleanupassocations()]
   },
 
   error: {
