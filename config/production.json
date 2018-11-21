@@ -1,4 +1,8 @@
 {
-  "host": "lessonblog-server-app.feathersjs.com",
-  "port": "PORT"
+  "host": "kumu.openode.io",
+  "port": "PORT",
+  "mongodb": "MONGODB_URL",
+  "authentication": {
+    "secret": "SECRET"
+  }
 }
