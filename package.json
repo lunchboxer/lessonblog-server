@@ -40,8 +40,11 @@
     "cors": "^2.8.4",
     "feathers-mongoose": "^6.2.0",
     "helmet": "^3.13.0",
+    "marked": "^0.5.2",
+    "moment": "^2.23.0",
     "mongodb-core": "^3.1.8",
     "mongoose": "^5.3.10",
+    "pug": "^2.0.3",
     "serve-favicon": "^2.5.0",
     "winston": "^3.1.0"
   },

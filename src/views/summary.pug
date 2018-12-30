@@ -1,0 +1,58 @@
+extends default
+
+block content
+  - const m = moment(lesson.date)
+  - const lessonDate = new Date(lesson.date)
+  - const daysAgo = (new Date() - lessonDate)/8.64e+7 
+  - 
+    const calDate = m.calendar(null, {
+      sameDay : '[今天]',
+      nextDay : '[明天]',
+      nextWeek : '[下]dddd',
+      lastDay : '[昨天]',
+      lastWeek : '[上]dddd'
+    })
+
+
+  a(href=`/classes/${group.name}`) &leftarrow; 回到#{group.name}班
+  br
+  br
+  h1 #{group.name}班第#{lesson.number}课
+  h4 #{calDate}
+    if daysAgo > 7
+      span , #{m.fromNow()}
+
+  - marked.setOptions({breaks: true})
+  unless lesson.summary_ZH
+    
+    h2 课程内容 （英语）
+    | !{marked(lesson.summary_EN)}
+
+  h2 课程内容
+  if lesson.summary_ZH
+    | !{marked(lesson.summary_ZH)}
+  else
+    p 这节课还没有翻译成中文的课程内容。
+
+  if materials
+    h3 材料
+    ul
+    each material in materials
+      - const type = material.type.split('/')[0]
+      li.material-card
+        a(href=material.uri)
+          if type === 'image'
+            - const size = 100
+            - const params = `w_${size},h_${size},c_fit`
+            - const brokenuri = material.uri.split('/')
+            - brokenuri.splice(6, 1, params)
+            - const thumbURI = brokenuri.join('/')
+              img(src=thumbURI alt=material.title class="icon")
+          else if type === 'video'
+            include icons/live_tv.svg
+          else if type === 'audio'
+            include icons/audiotrack.svg
+          else
+            include icons/attachment.svg
+    
+          p= material.title

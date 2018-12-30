@@ -1,0 +1,13 @@
+extends default
+
+block content
+  h1 请选择班级
+  if groups.length
+    ul
+      each group in groups
+        li.links(style="list-style:none;")
+          a(href=`/classes/${group.name}`) 
+            include icons/people.svg
+            | #{group.name}班
+  else 
+    p 还没有班级资料

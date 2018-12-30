@@ -1,5 +1,5 @@
 {
-  "host": "kumu.openode.io",
+  "host": "orchard.openode.io",
   "port": "PORT",
   "mongodb": "MONGODB_URL",
   "authentication": {
