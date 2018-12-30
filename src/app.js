@@ -36,7 +36,7 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/', express.static(app.get('public')));
 
-moment.locale('zh-cn')
+moment.locale('zh-cn');
 
 app.get('/', async (req, res, next) => {
   try {
@@ -98,7 +98,8 @@ app.get('/summary/:id', async (req, res, next) => {
       lesson,
       group,
       materials,
-      moment, marked
+      moment,
+      marked
     });
   } catch (error) {
     next(error);

@@ -11,9 +11,9 @@ mostly the addition of custom property colors, so that components can use them t
 :root {
   --alt-background: #f4f5f6;
   --color-on-primary: #ffffff;
-  --background: #a31521;
-  --primary-color: white;
-  --base-color: #dddddd;
+  --background: white;
+  --primary-color: black;
+  --base-color: #222222;
 }
 
 *,
