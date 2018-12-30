@@ -5,21 +5,24 @@ html(lang='zh')
     link(rel='stylesheet', href='/normalize.css')
     link(rel='stylesheet', href='/style.css')
     meta(name="viewport" content="width=device-width, initial-scale=1")
+
     link(rel='apple-touch-icon', sizes='180x180', href='/apple-touch-icon.png')
     link(rel="icon" type="image/png", sizes="32x32", href="/favicon-32x32.png")
     link(rel="icon", type="image/png", sizes="16x16", href="/favicon-16x16.png")
     link(rel="manifest", href="/manifest.json")
-    link(rel="mask-icon", href="/safari-pinned-tab.svg", color="#a31521")
+    link(rel="mask-icon", href="/safari-pinned-tab.svg", color="#222222")
     meta(name="apple-mobile-web-app-title", content="Orchard English")
     meta(name="application-name", content="Orchard English")
-    meta(name="msapplication-TileColor", content="#a31521")
+    meta(name="msapplication-TileColor", content="#000000")
     meta(name="theme-color", content="#000000")
+
   body
     main
      block header
-      .banner
-        a(href="/")
-          img(src="/orchard bannerbw-inverted.png")
+      a(href="/")
+        header
+        //- a(href="/") 
+          //- img(src="/orchard-bannerbw-inverted.png" alt="Orchard English banner")
 
 
       div.content      

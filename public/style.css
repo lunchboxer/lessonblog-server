@@ -639,9 +639,27 @@ img {
 .float-right {
   float: right;
 }
-
+header {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--primary-color);
+  background-image: url("orchard-banner-100.png");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  height: 100px;
+}
 div.content {
   padding: 2rem;
+}
+@media only screen and (min-width: 768px) {
+  header {
+    background-image: url("orchard-banner-200.png");
+    height: 200px;
+  }
+  div.content {
+    width: 80%;
+    margin: auto;
+  }
 }
 li.links {
   font-size: 2.5rem;
