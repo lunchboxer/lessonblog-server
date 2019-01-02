@@ -8,9 +8,10 @@ module.exports = function(app) {
   var ObjectId = Schema.Types.ObjectId;
   const lessons = new Schema(
     {
+      title: String,
       date: { type: Date, default: Date.now, required: true },
       number: { type: Number, required: true },
-      summary_EN: { type: String, required: true },
+      summary_EN: { type: String },
       summary_ZH: String,
       group: { type: ObjectId, ref: 'groups' },
       materials: { type: [ObjectId], ref: 'materials' }

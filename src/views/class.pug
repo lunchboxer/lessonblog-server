@@ -17,8 +17,8 @@ block content
             lastWeek : '[上]dddd'
           })  
         li.links
-          a(href=`/summary/${lesson._id}`) 第#{lesson.number}课 -&nbsp;
-            | #{calDate}
+          a(href=`/summary/${lesson._id}`) 第#{lesson.number}课 - #{lesson.title}
+          p= calDate
 
   else
     p 还没有输入这个班级的课程内容。
