@@ -17,7 +17,7 @@ block content
   a(href=`/classes/${group.name}`) &leftarrow; 回到#{group.name}班
   br
   br
-  h1 #{group.name}班第#{lesson.number}课 - #{lesson.title}
+  h2 #{group.name}班第#{lesson.number}课 - #{lesson.title}
   h4 #{calDate}
     if daysAgo > 7
       span , #{m.fromNow()}
@@ -25,10 +25,10 @@ block content
   - marked.setOptions({breaks: true})
   unless lesson.summary_ZH
     
-    h2 课程内容 （英语）
+    h3 课程内容 （英语）
     | !{marked(lesson.summary_EN)}
 
-  h2 课程内容
+  h3 课程内容
   if lesson.summary_ZH
     | !{marked(lesson.summary_ZH)}
   else
