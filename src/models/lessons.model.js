@@ -14,7 +14,8 @@ module.exports = function(app) {
       summary_EN: { type: String },
       summary_ZH: String,
       group: { type: ObjectId, ref: 'groups' },
-      materials: { type: [ObjectId], ref: 'materials' }
+      materials: { type: [ObjectId], ref: 'materials' },
+      published: { type: Boolean, default: false}
     },
     {
       timestamps: true
