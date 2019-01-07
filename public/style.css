@@ -643,18 +643,30 @@ header {
   width: 100%;
   overflow: hidden;
   background-color: var(--primary-color);
-  background-image: url("orchard-banner-100.png");
+  background-image: url("tree-sm.png");
   background-repeat: no-repeat;
   background-position: bottom left;
-  height: 100px;
+  height: 90px;
+  padding-top: 30px;
+  padding-left: 90px;
+  padding-right: 2rem;
+}
+header h1 {
+  color: white;
+  font-size: 3.5rem;
 }
 div.content {
   padding: 2rem;
 }
 @media only screen and (min-width: 768px) {
   header {
-    background-image: url("orchard-banner-200.png");
-    height: 200px;
+    background-image: url("tree-lg.png");
+    height: 150px;
+    padding-top: 60px;
+    padding-left: 140px;
+  }
+  header h1 {
+    font-size: 4rem;
   }
   div.content {
     width: 80%;

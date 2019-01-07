@@ -44,7 +44,7 @@ app.get('/', async (req, res, next) => {
       .service('groups')
       .find({ query: { $sort: { name: 1 } } });
     res.render('index', {
-      title: '果园英语首页',
+      title: '英语课程',
       groups: groups.data
     });
   } catch (error) {
@@ -59,13 +59,11 @@ app.get('/classes/:name', async (req, res, next) => {
     const group = groupres.data[0];
     // if no group redirect to an error page
     if (!group) throw new errors.NotFound('group does not exist');
-    const lessons = await app
-      .service('lessons')
-      .find({
-        query: { group: group._id, published: true, $sort: { number: -1 } }
-      });
+    const lessons = await app.service('lessons').find({
+      query: { group: group._id, published: true, $sort: { number: -1 } }
+    });
     res.render('class', {
-      title: `果园英语：${name}班课程内容`,
+      title: `${name}班课程内容`,
       lessons: lessons.data,
       group,
       moment
@@ -96,7 +94,7 @@ app.get('/summary/:id', async (req, res, next) => {
     };
     const materials = await getMaterials();
     res.render('summary', {
-      title: `果园英语：第${lesson.number}课`,
+      title: `${group.name}班第${lesson.number}课`,
       lesson,
       group,
       materials,
