@@ -21,39 +21,57 @@ block content
     if daysAgo > 7
       span , #{m.fromNow()}
 
-  - marked.setOptions({breaks: true})
   unless lesson.summary_ZH
     
     h3 课程内容 （英语）
-    | !{marked(lesson.summary_EN)}
+    | !{md.render(lesson.summary_EN)}
 
   h3 课程内容
   if lesson.summary_ZH
-    | !{marked(lesson.summary_ZH)}
+    | !{md.render(lesson.summary_ZH)}
   else
     p 这节课还没有翻译成中文的课程内容。
 
   if materials
     h3 材料
     ul
-    each material in materials
-      - const type = material.type.split('/')[0]
-      li.material-card
-        a(href=material.uri)
-          if type === 'image'
-            - const size = 100
-            - const params = `w_${size},h_${size},c_fit`
-            - const brokenuri = material.uri.split('/')
-            - brokenuri.splice(6, 1, params)
-            - const thumbURI = brokenuri.join('/')
-              img(src=thumbURI alt=material.title class="icon")
-          else if type === 'video'
-            include icons/live_tv.svg
-          else if type === 'audio'
-            include icons/audiotrack.svg
-          else
-            include icons/attachment.svg
-    
-          p= material.title
-          if material.notes
-            p= material.notes
+    - const images = materials.filter(material => material.type.split('/')[0] === 'image')
+    - const audios = materials.filter(material => material.type.split('/')[0] === 'audio')
+    - const videos = materials.filter(material => material.type.split('/')[0] === 'video')
+      if images.length > 0
+        div.thumbgallery
+          each image in images
+            div.thumb
+              a(href=image.uri)
+                - const size = 150
+                - const params = `w_${size},h_${size},c_fit`
+                - const brokenuri = image.uri.split('/')
+                - brokenuri.splice(6, 1, params)
+                - const thumbURI = brokenuri.join('/')
+                img(src=thumbURI alt=image.title)
+                br
+                span= image.title
+
+      if audios.length > 0
+        ul
+          each audio in audios
+            li.materialitem
+              .itemtitle
+                include icons/audiotrack.svg
+                a(href=audio.uri)
+                  span= audio.title
+              if audio.notes
+                .notes
+                  | !{md.render(audio.notes)}
+
+      if videos.length > 0
+        ul
+          each video in videos
+            li.materialitem
+              .itemtitle
+                include icons/live_tv.svg
+                a(href=video.uri)
+                  span= video.title
+              if video.notes
+                .notes
+                  | !{md.render(video.notes)}            

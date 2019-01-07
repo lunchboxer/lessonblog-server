@@ -15,10 +15,10 @@ block content
             lastDay : '[昨天]',
             lastWeek : '[上]dddd'
           })  
-        li.links
-          a(href=`/summary/${lesson._id}`) 
-            h4(style="margin-bottom:0;") 第#{lesson.number}课 - #{lesson.title}
-            p(style="font-size: 1.6rem;")= calDate
+        li.links 
+          h4(style="margin-bottom:0;")
+            a(href=`/summary/${lesson._id}`) 第#{lesson.number}课 - #{lesson.title}
+          p(style="font-size: 1.6rem;")= calDate
 
   else
     p 还没有输入这个班级的课程内容。

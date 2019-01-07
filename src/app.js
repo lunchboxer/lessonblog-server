@@ -4,9 +4,9 @@ const compress = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const moment = require('moment');
-const marked = require('marked');
 const logger = require('./logger');
 const errors = require('@feathersjs/errors');
+const MarkdownIt = require('markdown-it');
 
 const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
@@ -37,6 +37,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', express.static(app.get('public')));
 
 moment.locale('zh-cn');
+const md = new MarkdownIt({ breaks: true });
 
 app.get('/', async (req, res, next) => {
   try {
@@ -60,7 +61,12 @@ app.get('/classes/:name', async (req, res, next) => {
     // if no group redirect to an error page
     if (!group) throw new errors.NotFound('group does not exist');
     const lessons = await app.service('lessons').find({
-      query: { group: group._id, published: true, $sort: { number: -1 } }
+      query: {
+        group: group._id,
+        published: true,
+        $limit: 50,
+        $sort: { number: -1 }
+      }
     });
     res.render('class', {
       title: `${name}班课程内容`,
@@ -85,7 +91,7 @@ app.get('/summary/:id', async (req, res, next) => {
       }
       const materials = await app
         .service('materials')
-        .find({ query: { _id: { $in: lesson.materials } } });
+        .find({ query: { $limit: 20, _id: { $in: lesson.materials } } });
       if (materials.total > 0) {
         return materials.data;
       } else {
@@ -99,7 +105,7 @@ app.get('/summary/:id', async (req, res, next) => {
       group,
       materials,
       moment,
-      marked
+      md
     });
   } catch (error) {
     next(error);

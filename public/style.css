@@ -658,6 +658,17 @@ header h1 {
 div.content {
   padding: 2rem;
 }
+.thumbgallery {
+  display: flex;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.thumb {
+  width: 120px;
+  font-size: 1.3rem;
+  margin: 0.2rem;
+  text-align: center;
+}
 @media only screen and (min-width: 768px) {
   header {
     background-image: url("tree-lg.png");
@@ -671,6 +682,10 @@ div.content {
   div.content {
     width: 80%;
     margin: auto;
+  }
+  .thumb {
+    width: 150px;
+    margin: 0.2rem;
   }
 }
 li.links {
@@ -686,12 +701,24 @@ li.links {
   width: 6rem;
   fill: var(--base-color);
 }
-.material-card {
-  display: block;
-  list-style: none;
-}
 .group-icon {
   width: 2.5rem;
   margin: 2rem 1rem 0;
   fill: var(--base-color);
+}
+.materialitem {
+  list-style: none;
+}
+.materialitem .icon {
+  width: 3rem;
+  margin-right: 0.5rem;
+}
+.materialitem .notes {
+  padding-left: 3.5rem;
+  font-size: 1.4rem;
+}
+.materialitem .itemtitle {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }
