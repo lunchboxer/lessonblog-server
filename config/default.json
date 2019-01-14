@@ -27,5 +27,6 @@
       "usernameField": "username",
       "passwordField": "password"
     }
-  }
+  },
+  "postgres": "postgres://lessonblogger:blogpass@localhost:5432/lessonblog"
 }
