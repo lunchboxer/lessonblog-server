@@ -5,12 +5,14 @@
 module.exports = function(app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
+  const ObjectId = Schema.Types.ObjectId;
   const materials = new Schema(
     {
       title: { type: String, required: true },
       uri: { type: String, required: true },
       type: String,
-      notes: String
+      notes: String,
+      tags: { type: [ObjectId], ref: 'tags' }
     },
     {
       timestamps: true
