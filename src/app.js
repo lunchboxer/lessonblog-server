@@ -39,19 +39,19 @@ app.use('/', express.static(app.get('public')));
 moment.locale('zh-cn');
 const md = new MarkdownIt({ breaks: true });
 
-app.get('/', async (req, res, next) => {
-  try {
-    const groups = await app
-      .service('groups')
-      .find({ query: { $sort: { name: 1 } } });
-    res.render('index', {
-      title: '英语课程',
-      groups: groups.data
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+// app.get('/', async (req, res, next) => {
+//   try {
+//     const groups = await app
+//       .service('groups')
+//       .find({ query: { $sort: { name: 1 } } });
+//     res.render('index', {
+//       title: '英语课程',
+//       groups: groups.data
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 app.get('/classes/:name', async (req, res, next) => {
   const { name } = req.params;
